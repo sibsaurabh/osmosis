@@ -164,6 +164,11 @@ func (sva SignatureVerificationAuthenticator) Authenticate(ctx sdk.Context, acco
 
 		// No need to verify signatures on recheck tx
 		if !verificationData.Simulate && !ctx.IsReCheckTx() {
+			fmt.Println("pubKey data: ", pubKey)
+			fmt.Println("signerData data: ", signerData)
+			fmt.Println("sig.Data data: ", sig.Data)
+			fmt.Println("handler data: ", sva.Handler)
+			fmt.Println("verificationData.Tx data: ", verificationData.Tx)
 			err := authsigning.VerifySignature(
 				pubKey,
 				signerData,
